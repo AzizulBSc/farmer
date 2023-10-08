@@ -55,6 +55,31 @@
                 </ul>
             </li>
             <!--users end-->
+            <!--Category Details start-->
+            <li class="nav-item has-treeview {{ isActive(['admin/details*']) }}">
+                <a href="#" class="nav-link {{ isActive(['admin/details*']) }}">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                        Details
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('details.create') }}" class="nav-link {{ isActive(['admin/details/create']) }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Details</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All Details</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--users end-->
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

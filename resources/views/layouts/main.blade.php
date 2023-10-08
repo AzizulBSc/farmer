@@ -40,7 +40,7 @@
     {{--
     <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">--}}
     <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"> --}}
     <style>
         .required:after {
             content: '*';
@@ -126,8 +126,8 @@
     <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dist/js/demo.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-    <script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script> --}}
+    {{-- <script>
         $('#summernote').summernote({
             placeholder: 'Hello Bootstrap 4',
             tabsize: 2,
@@ -138,7 +138,7 @@
             tabsize: 2,
             height: 100
         });
-    </script>
+    </script> --}}
     <script>
         $(function() {
             $("#example1").DataTable();

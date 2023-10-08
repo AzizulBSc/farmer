@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
+    Route::resource('details', 'DetailsController');
+});
