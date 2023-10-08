@@ -30,21 +30,21 @@
                         @csrf
                         <div class="form-group">
                             <label for="CategoryParticipants">Select Category</label>
-                            <select class="form-control select2" id="parent_id" name="parent_id[]">
+                            <select class="form-control select2" id="category_id" name="category_id">
                                 @foreach($subcategories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
-                            @error('parent_id')
+                            @error('category_id')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="CategoryName">Category Details:</label>
-                          <textarea id="summernote">
+                          <textarea id="summernote" name="details">
                                         Place <em>some</em> <u>text</u> <strong>here</strong>
                         </textarea>
-                            @error('name')
+                            @error('details')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

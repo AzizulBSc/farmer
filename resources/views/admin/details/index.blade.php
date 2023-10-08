@@ -1,22 +1,7 @@
 @extends('layouts.main')
 @section('styles')
 <style>
-    .event-btn {
-        /* font-size: 10px; */
-        font-weight: bold;
-        /* width: 80px;
-        height: 40px; */
-        text-align: center;
-         color: white;
-    }
-    .result-btn {
-        font-size: 11px;
-        font-weight: bold;
-        /* width: 80px;
-        height: 40px; */
-        text-align: center;
-        color: white;
-    }
+
 </style>
 
 @endsection
@@ -52,7 +37,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">SL</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Category Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Result</th>
@@ -64,10 +49,10 @@
                     </table>
                     <ul class="pagination pagination-month justify-content-center">
                         <li class="page-item">
-                            <p class="text-center">Showing {{ $Category->firstItem() }} to {{
+                            {{-- <p class="text-center">Showing {{ $Category->firstItem() }} to {{
                                 $Category->lastItem()
                                 }} of {{ $Category->total() }} entries</p>
-                            {{$Category->links('pagination::bootstrap-4')}}
+                            {{$Category->links('pagination::bootstrap-4')}} --}}
                         </li>
                     </ul>
                 </div>

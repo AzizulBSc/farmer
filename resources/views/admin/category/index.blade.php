@@ -1,22 +1,7 @@
 @extends('layouts.main')
 @section('styles')
 <style>
-    .event-btn {
-        /* font-size: 10px; */
-        font-weight: bold;
-        /* width: 80px;
-        height: 40px; */
-        text-align: center;
-         color: white;
-    }
-    .result-btn {
-        font-size: 11px;
-        font-weight: bold;
-        /* width: 80px;
-        height: 40px; */
-        text-align: center;
-        color: white;
-    }
+
 </style>
 
 @endsection
@@ -53,21 +38,34 @@
                             <tr>
                                 <th scope="col">SL</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Description</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Result</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Add more rows as needed -->
+                            @foreach($Category as $key => $category)
+                            <tr>
+                                <th scope="row">{{ $Category->firstItem() + $key }}</th>
+                                <td>{{ $category->name }}</td>
+                                <td>
+                                    @if ($category->details)
+                                    <a href="{{ route('details',$category->details->id) }}">Show Details</a>
+                                    @endif
+
+                                    <a href="{{ route('category.edit', $category->id) }}"
+                                        class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{ route('category.delete', $category->id) }}"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Are you sure to delete?')">Delete</a>
+                                </td>
+                                <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                     <ul class="pagination pagination-month justify-content-center">
                         <li class="page-item">
-                            <p class="text-center">Showing {{ $Category->firstItem() }} to {{
+                            {{-- <p class="text-center">Showing {{ $Category->firstItem() }} to {{
                                 $Category->lastItem()
-                                }} of {{ $Category->total() }} entries</p>
-                            {{$Category->links('pagination::bootstrap-4')}}
+                                }} of {{ $Category->total() }} entries</p> --}}
+                            {{-- {{$Category->links('pagination::bootstrap-4')}} --}}
                         </li>
                     </ul>
                 </div>

@@ -18,7 +18,8 @@ class DetailsController extends Controller
      */
     public function index()
     {
-
+        $details = Details::all();
+         return view('admin.details.index',compact('details'));
     }
 
     /**
@@ -35,23 +36,16 @@ class DetailsController extends Controller
      */
     public function store(DetailsAddRequest $request)
     {
-        try {
-            return $this->responseSuccess(Details::create($request->all()), 'Details Successfully Inserted');
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), "Details Inserting Failed!");
-        }
+        $details = Details::create($request->all());
+        return view('admin.details.show',compact('details'))->with('success', 'Details Added Successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Details $Details)
+    public function show(Details $details)
     {
-        try {
-            return $this->responseSuccess($Details, 'Details Successfully Fetched');
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), 'Something Went Wrong');
-        }
+        return view('admin.details.show', compact('details'));
     }
 
     /**

@@ -66,10 +66,6 @@
 
 @section('js')
 <script>
-    var currentJudges = "{{ implode(',',$Category->users->pluck('id')->toArray() ?? []) }}".split(',');
-    $(document).ready(function() {
-        $('#judges').val(currentJudges);
-        $('#judges').trigger("change");
-    });
+   
 </script>
 @endsection
