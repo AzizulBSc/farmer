@@ -4,12 +4,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edit Category</h1>
+                <h1>Update Category Details</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Edit Category</li>
+                    <li class="breadcrumb-item active">Update Details</li>
                 </ol>
             </div>
         </div>
@@ -22,38 +22,41 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">Edit {{ $Category->name }}</h3>
+                    <h3 class="card-title">Update Category Details</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('Categorys.update',$Category->id) }}">
+                    <form method="POST" action="{{ route('details.update',$details->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="CategoryName">Category Name:</label>
-                            <input type="text" class="form-control" value="{{ $Category->name }}" id="name" name="name" placeholder="Enter Category name" required>
-                            @error('name')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="Category_dateTime">Category Time & Date:</label>
-                            <input type="datetime-local" value="{{ $Category->Category_dateTime }}" class="form-control" id="Category_dateTime" name="Category_dateTime" placeholder="Enter Category Time and Date" required>
-                            @error('Category_dateTime')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="CategoryParticipants">Category Judges:</label>
-                            <select class="form-control select2" id="judges" name="judges[]" multiple="multiple">
-                                @foreach($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->username }} ({{ $user->name }})</option>
+                            <label for="category_id">Select Category</label>
+                            <select class="form-control select2" id="category_id" name="category_id">
+                                @foreach($subcategories as $category)
+                                <option value="{{ $category->id }}" {{ $details->category_id == $category->id?"selected":"" }} >{{ $category->name }}</option>
                                 @endforeach
                             </select>
-                            @error('judges')
+                            @error('category_id')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ $details->title??"" }}">
+                            @error('title')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Category Details:</label>
+                            <textarea id="summernote" name="details">
+                                        {!! $details->details??"" !!}
+                        </textarea>
+                            @error('details')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
@@ -62,10 +65,13 @@
         </div>
     </div>
 </section>
-@endsection
-
 @section('js')
 <script>
-   
+    $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+  })
 </script>
+@endsection
 @endsection

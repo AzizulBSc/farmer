@@ -52,26 +52,23 @@ class DetailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Details $Details)
+    public function edit($id)
     {
-        try {
-            return $this->responseSuccess($Details, 'Details Successfully Fetched');
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), 'Something Went Wrong');
-        }
+        $details = Details::find($id);
+        $subcategories = Category::where('parent_id', '!=', null)->get();
+        return view('admin.details.edit', compact('details', 'subcategories'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDetailsRequest $request, Details $Details)
+    public function update(UpdateDetailsRequest $request, Details $details)
     {
-        try {
-            $Details->update($request->all());
-            return $this->responseSuccess($Details, 'Details Successfully Updated');
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), "Details Updating Failed!");
-        }
+
+        $details->update($request->all());
+        return view('admin.details.show', compact('details'))->with('success', 'Details Updated Successfully');
+
     }
 
     /**

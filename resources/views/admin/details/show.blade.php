@@ -4,12 +4,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Category Details</h1>
+                <h1>{{ $details->category->name }} Details</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">{{ $details->category->name }} Details</li>
+                    <li class="breadcrumb-item active">{{ $details->category->name??'' }} Details</li>
                 </ol>
             </div>
         </div>
@@ -20,8 +20,9 @@
         <div class="col-md-12">
             @include('flash-message')
             <div class="card">
-                <div class="card-header bg-primary">
-                    <h3 class="card-title"> {{ $details->category->name }}</h3>
+                <div class="card-header bg-primary d-flex justify-content-end">
+                    {{-- <h3 class="card-title"> </h3> --}}
+                    <a href="{{ route('details.edit',$details->id) }}" class="btn btn-sm btn-warning" title="Update Details"><i class="fa fa-edit"></i></a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

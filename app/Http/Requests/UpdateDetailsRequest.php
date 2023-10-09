@@ -22,6 +22,7 @@ class UpdateDetailsRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'title'=>'string|required',
              'details'=>'string|required',
              'category_id'=> 'integer|required'
         ];

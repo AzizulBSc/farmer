@@ -48,7 +48,7 @@
                                 <td>{{ $category->name }}</td>
                                 <td>
                                     @if($category->details)
-                                    <a href="{{ route('details.show',$category->details->id) }}">Show Details</a>`
+                                    <a href="{{ route('details.show',$category->details->id) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a>
                                     @endif
                                     @if(count($category->SubCategory)>0)
                                     <a href="{{ route('show.subcategory',$category->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-list"></i></a>
