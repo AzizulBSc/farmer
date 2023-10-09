@@ -43,8 +43,9 @@ class DetailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Details $details)
+    public function show($id)
     {
+        $details = Details::find($id);
         return view('admin.details.show', compact('details'));
     }
 

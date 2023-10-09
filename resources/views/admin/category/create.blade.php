@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('Categorys.store') }}">
+                    <form method="POST" action="{{ route('category.store') }}">
                         @csrf
                         <div class="form-group">
                             <label for="CategoryName">Category Name:</label>
@@ -36,8 +36,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="CategoryParticipants">Parent Category</label>
-                            <select class="form-control select2" id="parent_id" name="parent_id[]">
+                            <label for="parent_id">Parent Category</label>
+                            <select class="form-control select2" id="parent_id" name="parent_id">
                                 @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach

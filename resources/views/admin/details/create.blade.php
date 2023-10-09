@@ -4,12 +4,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Create Category</h1>
+                <h1>Add Category Details</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Create Category</li>
+                    <li class="breadcrumb-item active">Add Details</li>
                 </ol>
             </div>
         </div>
@@ -22,14 +22,14 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">Create Category</h3>
+                    <h3 class="card-title">Category Details</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <form method="POST" action="{{ route('details.store') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="CategoryParticipants">Select Category</label>
+                            <label for="category_id">Select Category</label>
                             <select class="form-control select2" id="category_id" name="category_id">
                                 @foreach($subcategories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -40,7 +40,14 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="CategoryName">Category Details:</label>
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                            @error('title')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Category Details:</label>
                           <textarea id="summernote" name="details">
                                         Place <em>some</em> <u>text</u> <strong>here</strong>
                         </textarea>

@@ -1,6 +1,7 @@
 <!-- Brand Logo -->
 <a href="index3.html" class="brand-link">
-    <img src="{{asset('dist/img/avatar5.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="{{asset('dist/img/avatar5.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        style="opacity: .8">
     <span class="brand-text font-weight-light">AdminLTE</span>
 </a>
 
@@ -55,6 +56,34 @@
                 </ul>
             </li>
             <!--users end-->
+
+            <!--Category Details start-->
+            <li class="nav-item has-treeview {{ isActive(['admin/details*']) }}">
+                <a href="#" class="nav-link {{ isActive(['admin/details*']) }}">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                        Category
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('category.create') }}"
+                            class="nav-link {{ isActive(['admin/category/create']) }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Category</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('category.index') }}" class="nav-link {{ isActive('[category]') }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All Catgory</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--Category end-->
+
             <!--Category Details start-->
             <li class="nav-item has-treeview {{ isActive(['admin/details*']) }}">
                 <a href="#" class="nav-link {{ isActive(['admin/details*']) }}">
@@ -66,20 +95,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('details.create') }}" class="nav-link {{ isActive(['admin/details/create']) }}">
+                        <a href="{{ route('details.create') }}"
+                            class="nav-link {{ isActive(['admin/details/create']) }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add Details</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>All Details</p>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
-            <!--users end-->
+            <!--Category end-->
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

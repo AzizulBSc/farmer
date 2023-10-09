@@ -22,4 +22,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
     Route::resource('details', 'DetailsController');
+    Route::resource('category', 'CategoryController');
+    Route::any('show/subcategory/{category}', 'CategoryController@showSubCategory')->name('show.subcategory');
 });
