@@ -27,7 +27,7 @@ class DetailsController extends Controller
      */
     public function create()
     {
-        $subcategories = Category::where('parent_id', '!=', null)->get();
+        $subcategories = Category::all();
         return view('admin.details.create',compact('subcategories'));
     }
 
@@ -55,7 +55,7 @@ class DetailsController extends Controller
     public function edit($id)
     {
         $details = Details::find($id);
-        $subcategories = Category::where('parent_id', '!=', null)->get();
+        $subcategories = Category::all();
         return view('admin.details.edit', compact('details', 'subcategories'));
 
     }
@@ -63,9 +63,9 @@ class DetailsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDetailsRequest $request, Details $details)
+    public function update(UpdateDetailsRequest $request,$id)
     {
-
+        $details = Details::find($id);
         $details->update($request->all());
         return view('admin.details.show', compact('details'))->with('success', 'Details Updated Successfully');
 

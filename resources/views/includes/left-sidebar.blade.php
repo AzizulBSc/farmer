@@ -32,7 +32,7 @@
             <!--users start-->
             {{-- <li class="nav-item has-treeview {{ isActive(['admin/users*']) }}">
                 <a href="#" class="nav-link {{ isActive(['admin/users*']) }}"> --}}
-            <li class="nav-item has-treeview">
+            {{-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!--users end-->
 
             <!--Category Details start-->

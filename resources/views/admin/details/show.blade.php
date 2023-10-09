@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>{{ $details->category->name }} Details</h1>
+                <h1>{{ $details->category->name??'' }} Details</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -22,7 +22,8 @@
             <div class="card">
                 <div class="card-header bg-primary d-flex justify-content-end">
                     {{-- <h3 class="card-title"> </h3> --}}
-                    <a href="{{ route('details.edit',$details->id) }}" class="btn btn-sm btn-warning" title="Update Details"><i class="fa fa-edit"></i></a>
+                    
+                    <a href="{{route('details.edit',$details->id)}}" class="btn btn-sm btn-warning" title="Update Details"><i class="fa fa-edit"></i></a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
