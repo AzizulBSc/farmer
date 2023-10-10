@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +26,14 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], 
     Route::resource('details', 'DetailsController');
     Route::resource('category', 'CategoryController');
     Route::any('show/subcategory/{category}', 'CategoryController@showSubCategory')->name('show.subcategory');
+});
+
+
+Route::any('/optimize', function () {
+    Artisan::call('optimize');
+    echo 'Optimized Successfully';
+});
+Route::any('/migrate', function () {
+    Artisan::call('migrate');
+    echo 'Migrated Successfully';
 });
