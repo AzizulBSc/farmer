@@ -53,7 +53,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         try {
-            return $this->responseSuccess($category, 'Category Successfully Fetched');
+            return $this->responseSuccess($category->load('SubCategory','details'), 'Category Successfully Fetched');
         } catch (Exception $e) {
             return $this->responseError($e->getMessage(), 'Something Went Wrong');
         }
