@@ -87,7 +87,7 @@
             <!--Category Details start-->
             <li class="nav-item has-treeview {{ isActive(['admin/details*']) }}">
                 <a href="#" class="nav-link {{ isActive(['admin/details*']) }}">
-                    <i class="nav-icon fas fa-user"></i>
+                    <i class="nav-icon fas fa-info-circle"></i>
                     <p>
                         Details
                         <i class="right fas fa-angle-left"></i>
@@ -101,12 +101,37 @@
                             <p>Add Details</p>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a href="" class="nav-link">
+                    <li class="nav-item">
+                        <a href="{{ route('details.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>All Details</p>
                         </a>
-                    </li> --}}
+                    </li>
+                </ul>
+            </li>
+            <!--Category end-->
+            <!--Category Details start-->
+            <li class="nav-item has-treeview {{ isActive(['admin/faq*']) }}">
+                <a href="#" class="nav-link {{ isActive(['admin/faq*']) }}">
+                    <i class="nav-icon fas fa-question-circle"></i>
+                    <p>
+                        FAQ
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('faq.create') }}" class="nav-link {{ isActive(['admin/faq/create']) }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add FAQ</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('faq.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All FAQ</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <!--Category end-->

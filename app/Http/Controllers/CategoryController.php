@@ -58,11 +58,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        try {
-            return $this->responseSuccess($category, 'Category Successfully Fetched');
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), 'Something Went Wrong');
-        }
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -70,13 +66,9 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        try {
-            $category->update($request->all());
-            return $this->responseSuccess($category, 'Category Successfully Updated');
 
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), "Category Updating Failed!");
-        }
+        $category->update($request->all());
+        return redirect()->back()->with('success', 'Category Updated Successfully');
     }
 
     /**
@@ -84,13 +76,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        try{
             $category->delete();
-            return $this->responseSuccess(null, 'Category Successfully Deleted');
-        }
-        catch(Exception $e){
-            return $this->responseError($e->getMessage(), 'Category Deleting Failed');
-        }
+            return redirect()->back()->with('success', 'Category Deleted Successfully');
+
     }
 
     public function showSubCategory(Category $category)

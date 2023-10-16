@@ -48,20 +48,24 @@
                                 <td>{{ $category->name }}</td>
                                 <td>
                                     @if($category->details)
-                                    <a href="{{ route('details.show',$category->details->id) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('details.show',$category->details->id) }}"
+                                        class="btn btn-sm btn-success" title="Show Details"><i
+                                            class="fa fa-eye"></i></a>
                                     @endif
                                     @if(count($category->SubCategory)>0)
-                                    <a href="{{ route('show.subcategory',$category->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-list" title="Show Sub Category"></i></a>
+                                    <a href="{{ route('show.subcategory',$category->id) }}"
+                                        class="btn btn-sm btn-primary"><i class="fa fa-list"
+                                            title="Show Sub Category"></i></a>
                                     @endif
-                                    {{-- <a href="{{ route('category.edit', $category->id) }}"
-                                        class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="{{ route('category.delete', $category->id) }}"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Are you sure to delete?')">Delete</a> --}}
+                                    <a href="{{ route('category.edit', $category->id) }}"
+                                        class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('category.destroy', $category->id)}}" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Are you sure to delete?')"><i
+                                            class="fa fa-trash"></i></a>
                                 </td>
-                                </tr>
+                            </tr>
                             @endforeach
-                                <!-- Add more rows as needed -->
+                            <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                     <ul class="pagination pagination-month justify-content-center">
