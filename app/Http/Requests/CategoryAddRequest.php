@@ -23,7 +23,7 @@ class CategoryAddRequest extends FormRequest
     {
         return [
             'name'=>'string|required',
-            'parent_id'=>'integer'
+            'parent_id'=>'nullable|integer'
         ];
     }
 }

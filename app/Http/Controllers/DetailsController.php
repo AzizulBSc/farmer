@@ -27,7 +27,7 @@ class DetailsController extends Controller
      */
     public function create()
     {
-        $subcategories = Category::all();
+        $subcategories = Category::whereNotNull('parent_id')->get();
         return view('admin.details.create',compact('subcategories'));
     }
 
