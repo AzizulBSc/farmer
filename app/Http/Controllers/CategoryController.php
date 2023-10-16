@@ -18,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('parent_id',null)->paginate(10);
-       return view('admin.category.index',compact('categories'));
+        $categories = Category::where('parent_id', null)->paginate(10);
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -27,8 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.category.create',compact('categories'));
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -36,9 +36,19 @@ class CategoryController extends Controller
      */
     public function store(CategoryAddRequest $request)
     {
-        Category::create($request->all());
-        return redirect()->route('category.index')->with('success', 'Category Added Successfully');
+        $data = [
+            'name' => $request->name,
+        ];
 
+        if ($request->parent_id != null) {
+            $data['parent_id'] = $request->parent_id;
+        } else {
+            if (Category::count() > 2) {
+                return redirect()->back()->with('error', 'Main Category cannot be added. Contact Admin');
+            }
+        }
+        Category::create($data);
+        return redirect()->route('category.index')->with('success', 'Category Added Successfully');
     }
 
     /**
@@ -83,8 +93,7 @@ class CategoryController extends Controller
 
     public function showSubCategory(Category $category)
     {
-        $categories = Category::where('parent_id',$category->id)->paginate(100);
-        return view('admin.category.sub-category', compact('categories','category'));
+        $categories = Category::where('parent_id', $category->id)->paginate(100);
+        return view('admin.category.sub-category', compact('categories', 'category'));
     }
-
 }
