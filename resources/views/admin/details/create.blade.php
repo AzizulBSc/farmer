@@ -49,8 +49,7 @@
                         <div class="form-group">
                             <label for="details">Category Details:</label>
                           <textarea id="summernote" name="details">
-                                        Place <em>some</em> <u>text</u> <strong>here</strong>
-                        </textarea>
+                          </textarea>
                             @error('details')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror

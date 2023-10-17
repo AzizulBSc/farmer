@@ -110,7 +110,7 @@
                 </ul>
             </li>
             <!--Category end-->
-            <!--Category Details start-->
+            <!--Faq Details start-->
             <li class="nav-item has-treeview {{ isActive(['admin/faq*']) }}">
                 <a href="#" class="nav-link {{ isActive(['admin/faq*']) }}">
                     <i class="nav-icon fas fa-question-circle"></i>
@@ -134,7 +134,32 @@
                     </li>
                 </ul>
             </li>
-            <!--Category end-->
+            <!--Faq end-->
+            <!--Prod techs Details start-->
+            <li class="nav-item has-treeview {{ isActive(['admin/prodtech*']) }}">
+                <a href="#" class="nav-link {{ isActive(['admin/prodtech*']) }}">
+                    <i class="nav-icon fas fa-list"></i>
+                    <p>
+                        উৎপাদন প্রযুক্তি
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('prodtech.create') }}" class="nav-link {{ isActive(['admin/prodtech/create']) }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add উৎপাদন প্রযুক্তি</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('prodtech.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All উৎপাদন প্রযুক্তি</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--Faq end-->
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -24,4 +24,5 @@ Route::post('login', [UserController::class, 'login']);
 Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::resource('category', 'CategoryController');
     Route::resource('details', 'DetailsController');
+    Route::resource('faq', 'FaqController');
 });
