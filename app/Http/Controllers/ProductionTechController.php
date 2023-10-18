@@ -26,7 +26,7 @@ class ProductionTechController extends Controller
 
         $categories = Category::where('parent_id', null)->get();
         $prodtechs = ProductionTech::where('parent_id', null)->get();
-        return view('admin.prodtech.create',compact('categories', 'prodtechs'));
+        return view('admin.prodtech.create', compact('categories', 'prodtechs'));
     }
 
     /**
@@ -35,7 +35,7 @@ class ProductionTechController extends Controller
     public function store(ProdTechStoreRequest $request)
     {
         $prodtech =  ProductionTech::create($request->all());
-        return redirect()->route('prodtech.index')->with('success', 'উৎপাদন প্রযুক্তি added Successfully!');
+        return redirect()->route('prodtech.index')->with('success', 'Production Technologies added Successfully!');
     }
 
     /**
@@ -43,7 +43,7 @@ class ProductionTechController extends Controller
      */
     public function show(ProductionTech $prodtech)
     {
-        //
+        return view('admin.prodtech.show', compact('prodtech'));
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductionTechController extends Controller
     public function update(ProdTechStoreRequest $request, ProductionTech $prodtech)
     {
         $prodtech->update($request->all());
-        return redirect()->route('prodtech.index')->with('success', 'উৎপাদন প্রযুক্তি Updated Successfully!');
+        return redirect()->route('prodtech.index')->with('success', 'Production Technologies Updated Successfully!');
     }
 
     /**
@@ -71,6 +71,6 @@ class ProductionTechController extends Controller
     public function destroy(ProductionTech $prodtech)
     {
         $prodtech->delete();
-        return redirect()->route('prodtech.index')->with('warning', 'উৎপাদন প্রযুক্তি Deleted Successfully!');
+        return redirect()->route('prodtech.index')->with('warning', 'Production Technologies Deleted Successfully!');
     }
 }

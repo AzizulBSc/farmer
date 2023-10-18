@@ -37,7 +37,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">SL</th>
-                                <th scope="col">Category Name</th>
+                                <th scope="col">Category Name (Parent)</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -46,7 +46,7 @@
                             @forelse ($details as $key => $detail)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $detail->category->name }}</td>
+                                <td>{{ $detail->category->name }} ({{ $detail->category->ParentCategory->name }})</td>
                                 <td><a href="{{route('details.show',$detail->id)}}" class="btn btn-sm btn-success" title="Show Details"><i
                                         class="fa fa-eye"></i></a></td>
                                 <td class="d-flex justify-content-center">
