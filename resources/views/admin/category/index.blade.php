@@ -48,8 +48,7 @@
                                 <td>{{ $category->name }}</td>
                                 <td class="d-flex justify-content-center">
                                     @if($category->details)
-                                    <a href="{{ route('details.index',$category->details->id) }}" ) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route('details',$category->details->id) }}" ) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a> &nbsp;
+                                    <a href="{{ route('details.index',$category->details->id)}}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a> &nbsp;
                                     @endif
                                     @if(count($category->SubCategory)>0)
                                     <a href="{{ route('show.subcategory',$category->id) }}" class="btn btn-sm btn-primary" title="Show Sub Category"><i class="fa fa-list"></i></a> &nbsp;
