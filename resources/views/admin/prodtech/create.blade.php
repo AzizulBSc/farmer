@@ -50,7 +50,6 @@
                                 @forelse ($prodtechs as $prodtech )
                                 <option value="{{ $prodtech->id }}">{{ $prodtech->title }}</option>
                                 @empty
-                                <option>No category Added</option>
                                 @endforelse
                             </select>
                             @error('parent_id')

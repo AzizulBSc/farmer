@@ -38,7 +38,6 @@
                                 <option value="{{ $category->id }}" {{$prodtech->category_id
                                 ==$category->id?"selected":""}}>{{ $category->name }}</option>
                                 @empty
-                                <option>No category Added</option>
                                 @endforelse
                             </select>
                             @error('parent_id')
