@@ -68,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact('category'));
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.category.edit', compact('category', 'categories'));
     }
 
     /**

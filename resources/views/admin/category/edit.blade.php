@@ -43,7 +43,7 @@
                                 @if ($category->parent_id == null)
                                 <option value=""></option>
                                 @endif
-                                @foreach(\App\Models\Category::all() as $item)
+                                @foreach($categories as $item)
                                 <option value="{{ $item->id }}" {{$category->parent_id
                                     ==$item->id?"selected":""}}>{{ $item->name }}</option>
                                 @endforeach
