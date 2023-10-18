@@ -36,7 +36,6 @@
                                 @forelse ($categories as $category )
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @empty
-                                <option>No category Added</option>
                                 @endforelse
                             </select>
                             @error('parent_id')
