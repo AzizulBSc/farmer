@@ -32,6 +32,7 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], 
 
 
 Route::any('/optimize', function () {
+    Artisan::call('route:clear');
     Artisan::call('optimize');
     echo 'Optimized Successfully';
 });
