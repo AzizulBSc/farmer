@@ -24,8 +24,8 @@ Route::post('login', [UserController::class, 'login']);
 Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::resource('category', 'CategoryController');
     Route::resource('details', 'DetailsController');
+    Route::resource('faq', 'FaqController');
     Route::get('prodtech/{prodtech}', 'ProductionTechController@show');
-
     Route::get('prodtechs/{category_id}', 'ProductionTechController@getParentProdTech');
     Route::get('subprodtechs', 'ProductionTechController@getSubProdTech');
 });
