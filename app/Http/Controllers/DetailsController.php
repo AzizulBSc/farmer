@@ -19,7 +19,7 @@ class DetailsController extends Controller
     public function index()
     {
         $details = Details::all();
-         return view('admin.details.index',compact('details'));
+        return view('admin.details.index', compact('details'));
     }
 
     /**
@@ -27,7 +27,7 @@ class DetailsController extends Controller
      */
     public function create()
     {
-        $subcategories = Category::all();
+        $subcategories = Category::whereNotNull('parent_id')->get();
         return view('admin.details.create',compact('subcategories'));
     }
 
@@ -37,7 +37,7 @@ class DetailsController extends Controller
     public function store(DetailsAddRequest $request)
     {
         $details = Details::create($request->all());
-        return view('admin.details.show',compact('details'))->with('success', 'Details Added Successfully');
+        return redirect()->route('details.index')->with('success', 'Details Added Successfully');
     }
 
     /**
@@ -57,30 +57,25 @@ class DetailsController extends Controller
         $details = Details::find($id);
         $subcategories = Category::all();
         return view('admin.details.edit', compact('details', 'subcategories'));
-
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDetailsRequest $request,$id)
+    public function update(UpdateDetailsRequest $request, $id)
     {
         $details = Details::find($id);
         $details->update($request->all());
-        return view('admin.details.show', compact('details'))->with('success', 'Details Updated Successfully');
-
+        return redirect()->route('details.index')->with('success', 'Details Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Details $Details)
+    public function destroy($id)
     {
-        try {
-            $Details->delete();
-            return $this->responseSuccess(null, 'Details Successfully Deleted');
-        } catch (Exception $e) {
-            return $this->responseError($e->getMessage(), 'Details Deleting Failed');
-        }
+        $details = Details::find($id);
+        $details->delete();
+        return redirect()->route('details.index')->with('success', 'Details Successfully Deleted');
     }
 }

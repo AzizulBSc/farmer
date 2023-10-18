@@ -22,35 +22,33 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">Edit {{ $Category->name }}</h3>
+                    <h3 class="card-title">Edit {{ $category->name }}</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('Categorys.update',$Category->id) }}">
+                    <form method="POST" action="{{ route('category.update',$category->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="CategoryName">Category Name:</label>
-                            <input type="text" class="form-control" value="{{ $Category->name }}" id="name" name="name" placeholder="Enter Category name" required>
+                            <input type="text" class="form-control" value="{{ $category->name }}" id="name" name="name"
+                                placeholder="Enter Category name" required>
                             @error('name')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="Category_dateTime">Category Time & Date:</label>
-                            <input type="datetime-local" value="{{ $Category->Category_dateTime }}" class="form-control" id="Category_dateTime" name="Category_dateTime" placeholder="Enter Category Time and Date" required>
-                            @error('Category_dateTime')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="CategoryParticipants">Category Judges:</label>
-                            <select class="form-control select2" id="judges" name="judges[]" multiple="multiple">
-                                @foreach($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->username }} ({{ $user->name }})</option>
+                            <label for="parent_id">Parent Category</label>
+                            <select class="form-control select2" id="parent_id" name="parent_id">
+                                @if ($category->parent_id == null)
+                                <option value=""></option>
+                                @endif
+                                @foreach(\App\Models\Category::all() as $item)
+                                <option value="{{ $item->id }}" {{$category->parent_id
+                                    ==$item->id?"selected":""}}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                            @error('judges')
+                            @error('parent_id')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -66,10 +64,6 @@
 
 @section('js')
 <script>
-    var currentJudges = "{{ implode(',',$Category->users->pluck('id')->toArray() ?? []) }}".split(',');
-    $(document).ready(function() {
-        $('#judges').val(currentJudges);
-        $('#judges').trigger("change");
-    });
+
 </script>
 @endsection

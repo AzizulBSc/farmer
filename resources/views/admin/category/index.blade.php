@@ -46,18 +46,22 @@
                             <tr>
                                 <th scope="row">{{ $categories->firstItem() + $key }}</th>
                                 <td>{{ $category->name }}</td>
-                                <td>
+                                <td class="d-flex justify-content-center">
                                     @if($category->details)
-                                    <a href="{{ route('details',$category->details->id) }}" ) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('details.index',$category->details->id) }}" ) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('details',$category->details->id) }}" ) }}" class="btn btn-sm btn-success" title="Show Details"><i class="fa fa-eye"></i></a> &nbsp;
                                     @endif
                                     @if(count($category->SubCategory)>0)
-                                    <a href="{{ route('show.subcategory',$category->id) }}" class="btn btn-sm btn-primary" title="Show Sub Category"><i class="fa fa-list"></i></a>
+                                    <a href="{{ route('show.subcategory',$category->id) }}" class="btn btn-sm btn-primary" title="Show Sub Category"><i class="fa fa-list"></i></a> &nbsp;
                                     @endif
-                                    {{-- <a href="{{ route('category.edit', $category->id) }}"
-                                        class="btn btn-primary btn-sm">Edit</a> --}}
-                                    {{-- <a href="{{ route('category.delete', $category->id) }}"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Are you sure to delete?')">Delete</a> --}}
+                                    <a href="{{ route('category.edit', $category->id) }}"
+                                        class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a> &nbsp;
+                                    <form action="{{ route('category.destroy',$category->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit"
+                                            onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                                 </tr>
                                 @endforeach

@@ -10,12 +10,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>All Category</h1>
+                <h1>All FAQ</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">All Details</li>
+                    <li class="breadcrumb-item active">All FAQ</li>
                 </ol>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title">All Details</h3>
+                    <h3 class="card-title">All FAQ</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -37,42 +37,39 @@
                         <thead>
                             <tr>
                                 <th scope="col">SL</th>
+                                <th scope="col">Title</th>
                                 <th scope="col">Category Name</th>
-                                <th scope="col">Description</th>
+                                <th>Parent Tech Name</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($details as $key => $detail)
+                            @foreach($prodtechs as $key => $prodtech)
                             <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $detail->category->name }}</td>
-                                <td><a href="{{route('details.show',$detail->id)}}" class="btn btn-sm btn-success" title="Show Details"><i
-                                        class="fa fa-eye"></i></a></td>
+                                <th scope="row">{{ $prodtechs->firstItem() + $key }}</th>
+                                <td>{{ $prodtech->title }}</td>
+                                <td>{{ $prodtech->category_id }}</td>
+                                <td>{{ $prodtech->parent_id }}</td>
                                 <td class="d-flex justify-content-center">
-                                    <a href="{{route('details.edit', $detail->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                    &nbsp;
-                                    <form action="{{ route('details.destroy',$detail->id) }}" method="POST">
+                                    <a href="{{ route('prodtech.edit', $prodtech->id) }}"
+                                        class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a> &nbsp;
+                                    <form action="{{ route('prodtech.destroy',$prodtech->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure to delete?')"><i
-                                                class="fa fa-trash"></i></button>
+                                        <button class="btn btn-danger btn-sm" type="submit"
+                                            onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
-                            </tr>
-
-                            @empty
-
-                            @endforelse
-                            <!-- Add more rows as needed -->
+                                </tr>
+                                @endforeach
+                                <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                     <ul class="pagination pagination-month justify-content-center">
                         <li class="page-item">
-                            {{-- <p class="text-center">Showing {{ $Category->firstItem() }} to {{
-                                $Category->lastItem()
-                                }} of {{ $Category->total() }} entries</p>
-                            {{$Category->links('pagination::bootstrap-4')}} --}}
+                            <p class="text-center">Showing {{ $prodtechs->firstItem() }} to
+                            {{ $prodtechs->lastItem() }} of {{ $prodtechs->total() }} entries</p>
+                                {{$prodtechs->links('pagination::bootstrap-4')}}
                         </li>
                     </ul>
                 </div>
@@ -82,8 +79,4 @@
     </div>
 
 </section>
-@endSection
-@section('js')
-<script>
-</script>
 @endsection

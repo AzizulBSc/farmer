@@ -13,7 +13,7 @@ class Category extends Model
         return $this->belongsTo(Category::class, 'parent_id');
     }
     public function SubCategory(){
-        return $this->hasMany(Category::class, 'parent_id','id');
+        return $this->hasMany(Category::class, 'parent_id')->with('details');
     }
     public function details(){
         return $this->hasOne(Details::class);
