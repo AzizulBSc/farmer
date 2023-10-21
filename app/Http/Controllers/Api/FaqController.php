@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FaqStoreRequest;
+use App\Models\Communication;
 use App\Models\Faq;
 use App\Traits\ResponseTrait;
 use Exception;
@@ -90,6 +91,14 @@ class FaqController extends Controller
             return $this->responseSuccess(null, 'Faq Successfully Deleted');
         } catch (Exception $e) {
             return $this->responseError($e->getMessage(), 'Faq Deleting Failed');
+        }
+    }
+    public function getCommunication()
+    {
+        try {
+            return $this->responseSuccess(Communication::first(), 'Communication Successfully Fetched');
+        } catch (Exception $e) {
+            return $this->responseError($e->getMessage(), 'Something Went Wrong');
         }
     }
 }

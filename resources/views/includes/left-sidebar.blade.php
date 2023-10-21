@@ -159,7 +159,18 @@
                     </li>
                 </ul>
             </li>
-            <!--Faq end-->
+            <!--Prod end-->
+            <!--Prod techs Details start-->
+            <li class="nav-item has-treeview {{ isActive(['admin/communication*']) }}">
+                <a href="{{ route('communication.index') }}" class="nav-link {{ isActive(['admin/communication*']) }}">
+                    <i class="nav-icon fas fa-phone"></i>
+                    <p>
+                        Communication
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+            </li>
+            <!--Prod end-->
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

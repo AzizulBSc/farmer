@@ -28,6 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], 
     Route::resource('faq','FaqController');
     Route::resource('prodtech', 'ProductionTechController');
     Route::any('show/subcategory/{category}', 'CategoryController@showSubCategory')->name('show.subcategory');
+    Route::resource('communication', 'CommunicationController');
 });
 
 
