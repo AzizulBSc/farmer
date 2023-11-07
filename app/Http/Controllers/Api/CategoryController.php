@@ -98,4 +98,8 @@ class CategoryController extends Controller
             return $this->responseError($e->getMessage(), 'Category Deleting Failed');
         }
     }
+    public function getSubCategory(Category $category)
+    {
+        return $this->responseSuccess($category->load('subcat'), 'Sub Category Successfully Fetched');
+    }
 }

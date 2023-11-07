@@ -30,4 +30,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('subprodtechs', 'ProductionTechController@getSubProdTech');
 
     Route::get('communication', 'FaqController@getCommunication');
+    Route::get('subcategory/{category}', 'CategoryController@getSubCategory');
+
 });
